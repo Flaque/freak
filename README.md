@@ -10,6 +10,12 @@ $ freak 0
 $ freak 10
 ```
 
+## Install
+
+```
+go get -u github.com/flaque/freak
+```
+
 ## What's a panic attack?
 
 "Panic attacks" mean different things to different people, so I can only really describe my own condition. But basically it's hightened fear / paranoia that generally latches onto a particular subject.
