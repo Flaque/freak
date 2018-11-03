@@ -1,4 +1,4 @@
-package main
+package fs
 
 import (
 	"io/ioutil"

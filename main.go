@@ -6,7 +6,9 @@ import (
 	"os"
 	"path"
 	"strconv"
-	"time"
+
+	"github.com/Flaque/freak/cmds"
+	"github.com/Flaque/freak/fs"
 )
 
 const help = `Usage:
@@ -14,6 +16,9 @@ $ freak <0-10>
 $ freak 1 
 $ freak 10
 `
+
+const freakfile = ".freak.csv"
+const freakdevfile = ".freak.dev.csv"
 
 func main() {
 
@@ -31,20 +36,18 @@ func main() {
 		f = freakdevfile
 	}
 
-	freakpath := path.Join(homeDir(), f)
+	freakpath := path.Join(fs.HomeDir(), f)
 
 	// Handle non number arguments
-	quantity, err := strconv.Atoi(arg)
+	intensity, err := strconv.Atoi(arg)
 	if err != nil {
-		log.Fatal("quantity must be an integer number")
+		log.Fatal("intensity must be an integer number")
 	}
 
-	data := []string{time.Now().Format(time.RFC1123), strconv.Itoa(quantity)}
-
-	err = WriteToCSV(data, freakpath)
+	err = cmds.Record(intensity, freakpath)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Recorded '%d' \n", quantity)
+	fmt.Printf("Recorded '%d' \n", intensity)
 }

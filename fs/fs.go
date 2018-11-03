@@ -1,4 +1,4 @@
-package main
+package fs
 
 import (
 	"encoding/csv"
@@ -6,10 +6,7 @@ import (
 	"runtime"
 )
 
-const freakfile = ".freak.csv"
-const freakdevfile = ".freak.dev.csv"
-
-func homeDir() string {
+func HomeDir() string {
 	if runtime.GOOS == "windows" {
 		home := os.Getenv("HOMEDRIVE") + os.Getenv("HOMEPATH")
 		if home == "" {
