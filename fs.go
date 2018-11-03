@@ -7,6 +7,7 @@ import (
 )
 
 const freakfile = ".freak.csv"
+const freakdevfile = ".freak.dev.csv"
 
 func homeDir() string {
 	if runtime.GOOS == "windows" {

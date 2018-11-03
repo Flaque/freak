@@ -24,7 +24,14 @@ func main() {
 	}
 	arg := os.Args[1]
 
-	freakpath := path.Join(homeDir(), freakfile)
+	// Support dev environments
+	f := freakfile
+	if os.Getenv("FREAK_DEV") == "TRUE" {
+		fmt.Println("freak dev")
+		f = freakdevfile
+	}
+
+	freakpath := path.Join(homeDir(), f)
 
 	// Handle non number arguments
 	quantity, err := strconv.Atoi(arg)
